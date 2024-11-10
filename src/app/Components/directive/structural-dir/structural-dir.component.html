@@ -1,0 +1,88 @@
+<div class="p-5">
+    <div class="bg-slate-600 mt-4 pt-2 pb-2">
+        <P class="text-2xl text-white font-semibold">Structural Directive</P>
+        <p>*ngIf,*ngFor</p>
+    </div>
+    <div class="mt-5 grid grid-cols-4 gap-3">
+        <div *ngIf="isDiv1Visible" class="bg-red-500 p-3">
+            <p class="text-2xl text-center font-semibold">Div-1</p>
+        </div>
+        <div *ngIf="isDiv2visible" class="bg-green-700 p-3">
+            <p class="text-2xl text-center font-semibold">Div-2</p>
+        </div>
+        <div *ngIf="num1 == num2" class="bg-slate-500 p-3">
+            <p class="text-2xl text-center font-semibold">Div-3</p>
+        </div>
+        <div *ngIf="isActive" class="bg-blue-600 p-3">
+            <p *ngIf="selectedState == 'Bangladesh'" class="text-2xl text-center font-semibold">Div-4</p>
+        </div>
+    </div>
+    <div class="grid grid-cols-4 gap-3 mt-3">
+        <div class="flex items-center justify-center gap-2">
+            <button class="pt-1 pb-1 pl-2 pr-2 text-white font-semibold bg-red-400 rounded-md hover:bg-red-600 transition" (click)="hideDiv1()">Hide</button>
+            <button class="pt-1 pb-1 pl-2 pr-2 text-white font-semibold bg-blue-500 rounded-md hover:bg-blue-700 transition" (click)="showDiv1()">Show</button>
+        </div>
+        <div class="flex justify-center items-center">
+            <button class="pt-1 pb-1 pl-2 pr-2 text-white font-semibold bg-green-700 rounded-md hover:bg-green-900 transition" (click)="toggleDiv2()">Toggle</button>
+        </div>
+        <div class="flex items-center justify-center gap-2">
+            <input type="text" [(ngModel)]="num1" placeholder="Num-1" class="w-16">
+            <input type="text" [(ngModel)]="num2" placeholder="Num-2" class="w-16">
+        </div>
+        <div class="flex items-center justify-center gap-3">
+            <input [(ngModel)]="isActive" type="checkbox" class="w-12">
+            <select [(ngModel)]="selectedState">
+                <option value="">Select State</option>
+                <option value="Bangladesh">Bangladesh</option>
+                <option value="India">India</option>
+                <option value="USA">USA</option>
+            </select>
+        </div>
+    </div>
+    <p class="pb-3 mt-4 text-2xl font-bold text-center">using of *ngFor</p>
+    <div class="grid grid-cols-4 p-3">
+        <div class="p-2">
+            <ul class="list-disc">
+                <li *ngFor="let city of cityArray">{{city}}</li>
+            </ul>
+        </div>
+        <div>
+            <select>
+                <option *ngFor="let fruit of fruitArray">{{fruit}}</option>
+            </select>
+        </div>
+        <div>
+            <div *ngFor="let divshowfruit of fruitArray">{{divshowfruit}}</div>
+        </div>
+        <div>
+            <select>
+                <option *ngFor="let stud of studentList" [value]="stud.studentId">{{stud.name}}</option>
+            </select>
+        </div>
+    </div>
+    <div>
+        <table class="table-auto border-separate border border-black border-spacing-5">
+            <thead>
+                <tr>
+                    <th class="border border-black">Sr No</th>
+                    <th class="border border-black">Name</th>
+                    <th class="border border-black">City</th>
+                    <th class="border border-black">Status</th>
+                    <th class="border border-black">ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let student of studentList; let srNo = index">
+                    <td class="border border-black">{{srNo + 1}}</td>
+                    <td class="border border-black">{{student.name}}</td>
+                    <td class="border border-black">{{student.city}}</td>
+                    <td class="border border-black">
+                        <span *ngIf="student.isActive">Active</span>
+                        <span *ngIf="!student.isActive">De-Active</span>
+                    </td>
+                    <td class="border border-black">{{student.studentId}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

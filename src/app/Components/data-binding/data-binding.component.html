@@ -1,43 +1,45 @@
-<div class="text-2xl pb-3">One way from .ts to .html</div>
-<div class="grid grid-cols-3 w-2/3 gap-4">
-    <div class="bg-green-800 grid grid-rows-2">
-        interpolation
-        <h1 class="text-xl text-white">{{courseName}}</h1>
-        <h1 class="text-xl text-white">{{inputType}}</h1>
-        <input type="text" value="{{courseName}}" placeholder="Enter text">
-        <input type="{{inputType}}">
-    </div>
-    <div [class]="myClassName">
-        property Binding
-        <p [class]="textFormat">Hello, i'm doing property binding</p>
-        <input type="text" [value]="courseName">
-    </div>
-    <div class="bg-yellow-500">
-        event Binding
-        <div class="pt-3">
-            <button class="p-2 rounded-md shadow-md bg-green-600 text-white font-semibold"
-                (click)="showAlert('Welcome to Angular 18')">Show Welcome</button>
+<div class="p-5">
+    <div class="text-2xl pb-3">One way from .ts to .html</div>
+    <div class="grid grid-cols-3 w-2/3 gap-4">
+        <div class="bg-green-800 grid grid-rows-2">
+            interpolation
+            <h1 class="text-xl text-white">{{courseName}}</h1>
+            <h1 class="text-xl text-white">{{inputType}}</h1>
+            <input type="text" value="{{courseName}}" placeholder="Enter text">
+            <input type="{{inputType}}">
         </div>
-        <div class="pt-2"><span (click)="showAlert('This is from span')">Click me</span></div>
+        <div [class]="myClassName">
+            property Binding
+            <p [class]="textFormat">Hello, i'm doing property binding</p>
+            <input type="text" [value]="courseName">
+        </div>
+        <div class="bg-yellow-500">
+            event Binding
+            <div class="pt-3">
+                <button class="p-2 rounded-md shadow-md bg-green-600 text-white font-semibold"
+                    (click)="showAlert('Welcome to Angular 18')">Show Welcome</button>
+            </div>
+            <div class="pt-2"><span (click)="showAlert('This is from span')">Click me</span></div>
+        </div>
     </div>
-</div>
-
-<div class="text-2xl pt-3">Two way Data Binding</div>
-<div class="pt-3">
-    <button class="p-2 rounded-md shadow-md bg-green-600 text-white font-semibold" (click)="changeCourseName()">Change
-        courseName</button>
-    <div>
-        <input type="text" [(ngModel)]="courseName"> - {{courseName}};
+    
+    <div class="text-2xl pt-3">Two way Data Binding</div>
+    <div class="pt-3">
+        <button class="p-2 rounded-md shadow-md bg-green-600 text-white font-semibold" (click)="changeCourseName()">Change
+            courseName</button>
+        <div>
+            <input type="text" [(ngModel)]="courseName"> - {{courseName}};
+        </div>
+        <input type="checkbox" [(ngModel)]="isBangladeshi">
+        <select [(ngModel)]="stateName">
+            <option value="">select</option>
+            <option value="khulna">Khula</option>
+            <option value="Chitagong">Chitagong</option>
+            <option value="Dhaka">Dhaka</option>
+            <option value="Barishal">Barishal</option>
+            <option value="Rajshahi">Rajshahi</option>
+        </select>
     </div>
-    <input type="checkbox" [(ngModel)]="isBangladeshi">
-    <select [(ngModel)]="stateName">
-        <option value="">select</option>
-        <option value="khulna">Khula</option>
-        <option value="Chitagong">Chitagong</option>
-        <option value="Dhaka">Dhaka</option>
-        <option value="Barishal">Barishal</option>
-        <option value="Rajshahi">Rajshahi</option>
-    </select>
+    <div class="text-2xl pt-3">Using Signal</div>
+    <h1 class="text-xl font-bold text-amber-600">{{firstName()}}</h1>
 </div>
-<div class="text-2xl pt-3">Using Signal</div>
-<h1 class="text-xl font-bold text-amber-600">{{firstName()}}</h1>
